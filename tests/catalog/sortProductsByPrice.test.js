@@ -20,21 +20,21 @@ describe('sortProductsByPrice', () => {
   });
 
   test("товары [3, 1, 4] c 'desc' сортируются как [1, 4, 3]", () => {
-    expect(sortProductsByPrice(products.filter((product) => product.id === 3 || product.id === 1 || product.id === 4), 'desc').map((product) => product.id)).toEqual([1, 4, 3]);
+    expect(sortProductsByPrice(products.filter(({ id }) => [3, 1, 4].includes(id)), 'desc').map((product) => product.id)).toEqual([1, 4, 3]);
   });
 
   test("товары [5, 2, 6] c 'desc' сортируются как [2, 5, 6]", () => {
-    expect(sortProductsByPrice(products.filter((product) => product.id === 5 || product.id === 2 || product.id === 6), 'desc').map((product) => product.id)).toEqual([2, 5, 6]);
+    expect(sortProductsByPrice(products.filter(({ id }) => [5, 2, 6].includes(id)), 'desc').map((product) => product.id)).toEqual([2, 5, 6]);
   });
 
   test("'asc' не меняет исходный массив [1, 3, 4]", () => {
-    const prod = products.filter((product) => product.id === 1 || product.id === 3 || product.id === 4);
+    const prod = products.filter(({ id }) => [1, 3, 4].includes(id));
     sortProductsByPrice(prod, 'asc');
     expect(prod).toEqual(prod);
   });
 
   test("'desc' не меняет исходный массив [1, 3, 4]", () => {
-    const prod = products.filter((product) => product.id === 1 || product.id === 3 || product.id === 4);
+    const prod = products.filter(({ id }) => [1, 3, 4].includes(id));
     sortProductsByPrice(prod, 'desc');
     expect(prod).toEqual(prod);
   });
