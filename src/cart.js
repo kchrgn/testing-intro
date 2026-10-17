@@ -14,7 +14,15 @@ function addToCart(cart, product, quantity) {
   return cart;
 }
 
-function changeQuantity() { return notImplemented(); }
+function changeQuantity(cart, id, quantity) {
+  if (quantity === 0) throw new RangeError;
+  const product = cart.find((p) => p.id === id)
+  if (!product) return cart;
+  if (quantity > product.stock) throw new RangeError;
+  product.quantity = quantity;
+  return cart;
+}
+
 function removeFromCart() { return notImplemented(); }
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
