@@ -23,7 +23,12 @@ function changeQuantity(cart, id, quantity) {
   return cart;
 }
 
-function removeFromCart() { return notImplemented(); }
+function removeFromCart(cart, id) {
+  const productIndex =  cart.findIndex((p) => p.id === id);
+  if (productIndex >= 0) cart.splice(productIndex, 1);
+  return cart
+}
+
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
 
